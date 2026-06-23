@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b12tfh7rnh2yn"]
+
+[ext_resource type="Script" uid="uid://cak16hm4ejdd6" path="res://states/title_state/title_state.gd" id="1_dvdlm"]
+[ext_resource type="Texture2D" uid="uid://dmfbgnboo3suw" path="res://UI/menu/title_background.png" id="2_dvdlm"]
+
+[node name="TitleState" type="Control" unique_id=677864039]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_dvdlm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1731807165]
+layer = -1
+
+[node name="BackgroundImage" type="TextureRect" parent="CanvasLayer" unique_id=2025356385]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dvdlm")
