@@ -3,8 +3,6 @@ extends State
 class_name Run
 
 func enter():
-	print("Entering run state")
-	
 	actor.get_node("AnimatedSprite2D").play("run")
 
 func physics_update(_delta):

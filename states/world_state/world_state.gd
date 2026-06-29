@@ -32,7 +32,7 @@ func transition_to_next_room(exit_id):
 func _execute_room_swap(next_room_path, target_spawn_id):
 
 	# Call global transition instance
-	TransitionManager.fade_to_state(func():
+	TransitionManager.transition(func():
 		#player.set_physics_process(false)
 		
 		# Clear out the previous room layout before loading the new one
@@ -52,26 +52,22 @@ func _load_room(room_path: String, spawn_id: int) -> void:
 	game_camera.position_smoothing_enabled = false
 	
 	var next_room_scene = load(room_path)
-	if next_room_scene:
-		
-		current_room_node = next_room_scene.instantiate()
-		current_room_container.add_child(current_room_node)
 
-		var spawn_node = current_room_node.get_node_or_null("Spawns/" + str(spawn_id))
-		if spawn_node:
-			# Set the player position to the spawn node
-			player.global_position = spawn_node.global_position
+	current_room_node = next_room_scene.instantiate()
+	current_room_container.add_child(current_room_node)
 
-		# Handle camera boundaries, targets, and matrix synchronization
-		_snap_camera_to_current_room()
-		
-		# wait for one process frame and reeanable the camera smoothing
-		await get_tree().process_frame
-		game_camera.position_smoothing_enabled = true
+	var spawn_node = current_room_node.get_node_or_null("Spawns/" + str(spawn_id))
 
-	else:
-		print("[ERROR] Failed to load room at path: ", room_path)
+	# Set the player position to the spawn node
+	player.global_position = spawn_node.global_position
+
+	# Handle camera boundaries, targets, and matrix synchronization
+	_snap_camera_to_current_room()
 	
+	# wait for one process frame and reeanable the camera smoothing
+	await get_tree().process_frame
+	game_camera.position_smoothing_enabled = true
+
 
 # Update boundaries and instantly snap the camera
 func _snap_camera_to_current_room():

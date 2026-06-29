@@ -12,6 +12,5 @@ func _on_body_entered(body):
 				break
 				
 		# Switch state
-		var world_manager = get_tree().root.get_node_or_null("WorldState")
-		if world_manager.has_method("transition_to_next_room"):
-			world_manager.transition_to_next_room(exit_id)
+		var world_state = get_tree().root.get_node_or_null("WorldState")
+		world_state.transition_to_next_room(exit_id)

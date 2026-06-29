@@ -1,6 +1,5 @@
 extends Node
 
-
 @onready var color_rect = $ColorRect
 var input_lock = false
 
@@ -9,6 +8,7 @@ func _ready():
 	color_rect.color.a = 0.0
 	color_rect.visible = false
 
+# Transition func with default paramters that can be overidden
 func transition(on_mid_transition, in_duration=0.2, out_duration=0.5):
 	if input_lock:
 		return

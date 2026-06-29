@@ -13,6 +13,7 @@ config_version=5
 config/name="mv_v1.0"
 run/main_scene="uid://dth8b5ow48upl"
 config/features=PackedStringArray("4.6", "Mobile")
+run/max_fps=120
 
 [autoload]
 
@@ -25,7 +26,7 @@ SaveManager="*uid://bn6wk7r4s3f7e"
 
 window/size/viewport_width=2340
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [input]
 

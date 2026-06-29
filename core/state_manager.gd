@@ -12,7 +12,5 @@ const SCENES = {
 func change_state(target_state: GameState):
 	TransitionManager.transition(func():
 		var target_path = SCENES[target_state]
-		get_tree().change_scene_to_file(target_path),
-		0.6,
-		0.6,
+		get_tree().change_scene_to_file(target_path)
 		)

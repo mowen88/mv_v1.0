@@ -7,14 +7,14 @@ class_name State
 var fsm: FiniteStateMachine
 var actor: CharacterBody2D
 
-func enter() -> void:
+func enter():
 	pass
 
-func exit() -> void:
+func exit():
 	pass
 
-func update(_delta: float) -> void:
+func update(_delta):
 	pass
 	
-func physics_update(_delta: float) -> void:
+func physics_update(_delta):
 	pass
