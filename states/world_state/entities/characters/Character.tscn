@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://i8glx5ed6k8x"]
+
+[ext_resource type="Script" uid="uid://diq7imuclpv4v" path="res://states/world_state/entities/characters/finite_state_machine/finite_state_machine.gd" id="1_pmdsg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0hr1"]
+
+[node name="Character" type="CharacterBody2D" unique_id=1164829458]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1500811874]
+shape = SubResource("RectangleShape2D_p0hr1")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=62056824]
+
+[node name="FiniteStateMachine" type="Node" parent="." unique_id=818295703]
+script = ExtResource("1_pmdsg")

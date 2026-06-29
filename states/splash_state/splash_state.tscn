@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://buxs8mnm1v6l7" path="res://states/splash_state/splash_state.gd" id="1_4i0h6"]
 [ext_resource type="Texture2D" uid="uid://bf4l37ypvcw1g" path="res://states/splash_state/mojosoft_logo.png" id="2_1hwi7"]
-[ext_resource type="FontFile" uid="uid://qt065a2b84t8" path="res://font/homespun.ttf" id="3_b35vv"]
+[ext_resource type="FontFile" uid="uid://qt065a2b84t8" path="res://UI/font/homespun.ttf" id="3_b35vv"]
 
 [node name="SplashState" type="Control" unique_id=445385638]
 layout_mode = 3

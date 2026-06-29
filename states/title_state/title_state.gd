@@ -2,13 +2,14 @@ extends Control
 
 const MAIN_MENU_SCENE = preload("res://UI/menu/main_menu.tscn")
 const SETTINGS_MENU_SCENE = preload("res://UI/menu/settings_menu.tscn")
+const SAVE_SLOT_MENU_SCENE = preload("res://UI/menu/save_slot_menu.tscn")
 
 var fade_speed = 0.2
 var current_menu_instance = null
 
 func _ready():
 	TransitionManager.input_lock = true
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	await instantiate_menu(MAIN_MENU_SCENE)
 
 func instantiate_menu(menu_scene: PackedScene):
@@ -55,9 +56,10 @@ func _on_button_pressed(button_name: String):
 		
 		# Main Menu options
 		"ContinueButton":
-			switch_menu(MAIN_MENU_SCENE)
+			switch_menu(SAVE_SLOT_MENU_SCENE)
 		"NewGameButton":
-			switch_menu(MAIN_MENU_SCENE)
+			StateManager.change_state(StateManager.GameState.WORLD)
+			# switch_menu(SAVE_SLOT_MENU_SCENE)
 		"SettingsButton":
 			switch_menu(SETTINGS_MENU_SCENE)
 		

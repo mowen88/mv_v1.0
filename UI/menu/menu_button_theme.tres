@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bwyqxsqeh0mbb"]
 
-[ext_resource type="FontFile" uid="uid://qt065a2b84t8" path="res://font/homespun.ttf" id="1_nhslw"]
+[ext_resource type="FontFile" uid="uid://qt065a2b84t8" path="res://UI/font/homespun.ttf" id="1_nhslw"]
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)

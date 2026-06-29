@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cak16hm4ejdd6" path="res://states/title_state/title_state.gd" id="1_dvdlm"]
 [ext_resource type="Texture2D" uid="uid://dmfbgnboo3suw" path="res://UI/menu/title_background.png" id="2_dvdlm"]
+[ext_resource type="Texture2D" uid="uid://dibhlbo7xpg3m" path="res://states/title_state/title_text.png" id="3_iidgw"]
 
 [node name="TitleState" type="Control" unique_id=677864039]
 layout_mode = 3
@@ -23,3 +24,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dvdlm")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=973178909]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1058.0
+offset_top = 139.0
+offset_right = -923.0
+offset_bottom = 179.0
+grow_horizontal = 2
+scale = Vector2(9, 9)
+texture = ExtResource("3_iidgw")

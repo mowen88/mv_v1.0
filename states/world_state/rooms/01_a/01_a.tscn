@@ -1,0 +1,29 @@
+[gd_scene format=4 uid="uid://bixnwgirh71ew"]
+
+[ext_resource type="PackedScene" uid="uid://dtgksoxcmiogl" path="res://states/world_state/rooms/base_room.tscn" id="1_djr24"]
+[ext_resource type="TileSet" uid="uid://8nv7ijoxyd2p" path="res://states/world_state/tilesets/tileset_01.tres" id="2_uak8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uak8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3w1bs"]
+
+[node name="01A" unique_id=315341494 instance=ExtResource("1_djr24")]
+
+[node name="SolidTileMap" parent="." index="1" unique_id=12999079]
+tile_map_data = PackedByteArray("AAApACgAAAAPAAAAAAAqACgAAAAPAAAAAAArACgAAAARAAAAAAAsACgAAAAQAAAAAAAtACgAAAAQAAAAAAAuACgAAAARAAAAAAAvACgAAAAPAAAAAAAwACgAAAAPAAAAAAAxACgAAAAQAAAAAAAyACgAAAAQAAAAAAAzACgAAAARAAAAAAA0ACgAAAAQAAAAAAA=")
+tile_set = ExtResource("2_uak8j")
+
+[node name="0" type="Marker2D" parent="Spawns" parent_id_path=PackedInt32Array(214822847) index="0" unique_id=1545362515]
+position = Vector2(373, 305)
+
+[node name="1" type="Marker2D" parent="Spawns" parent_id_path=PackedInt32Array(214822847) index="1" unique_id=361293440]
+
+[node name="1" type="Area2D" parent="Exits" parent_id_path=PackedInt32Array(558606910) index="0" unique_id=1419394133]
+
+[node name="1" type="CollisionShape2D" parent="Exits/1" index="0" unique_id=70518795]
+shape = SubResource("RectangleShape2D_uak8j")
+
+[node name="2" type="Area2D" parent="Exits" parent_id_path=PackedInt32Array(558606910) index="1" unique_id=305684493]
+
+[node name="2" type="CollisionShape2D" parent="Exits/2" index="0" unique_id=1465769157]
+shape = SubResource("RectangleShape2D_3w1bs")

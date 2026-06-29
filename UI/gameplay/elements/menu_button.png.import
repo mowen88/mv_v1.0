@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc24is3llxoqo"
-path="res://.godot/imported/menu_canvas.png-ccae3db72e1554fd43b680f3e98611f7.ctex"
+uid="uid://d02c6gp4if4be"
+path="res://.godot/imported/menu_button.png-684eef357dc0e84ba4454ee6e4c835e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://states/splash_state/menu_canvas.png"
-dest_files=["res://.godot/imported/menu_canvas.png-ccae3db72e1554fd43b680f3e98611f7.ctex"]
+source_file="res://UI/gameplay/elements/menu_button.png"
+dest_files=["res://.godot/imported/menu_button.png-684eef357dc0e84ba4454ee6e4c835e4.ctex"]
 
 [params]
 
