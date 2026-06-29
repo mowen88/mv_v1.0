@@ -15,7 +15,7 @@ script = ExtResource("1_emvdf")
 zoom = Vector2(9, 9)
 process_callback = 0
 position_smoothing_enabled = true
-position_smoothing_speed = 4.0
+position_smoothing_speed = 8.0
 
 [node name="CameraTarget" type="Node2D" parent="." unique_id=359759800]
 

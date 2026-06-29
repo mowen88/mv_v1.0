@@ -9,7 +9,7 @@ var current_room_node: Node2D = null
 var in_cutscene = false
 
 func _ready():
-	# Instantiates the first room with room strign and spawn point paramters
+	# Instantiates the first room with room string and spawn point paramters
 	_load_room("res://states/world_state/rooms/01_a/01_a.tscn", 0)
 
 func _process(_delta):
@@ -43,14 +43,11 @@ func _execute_room_swap(next_room_path, target_spawn_id):
 
 	)
 	
-## Instantiating and setting up any room
+# Instantiating and setting up any room
 func _load_room(room_path: String, spawn_id: int) -> void:
 	
 	current_room_node = null
-	
-	# disable camera smoothing
-	game_camera.position_smoothing_enabled = false
-	
+
 	var next_room_scene = load(room_path)
 
 	current_room_node = next_room_scene.instantiate()
@@ -60,27 +57,17 @@ func _load_room(room_path: String, spawn_id: int) -> void:
 
 	# Set the player position to the spawn node
 	player.global_position = spawn_node.global_position
-
-	# Handle camera boundaries, targets, and matrix synchronization
-	_snap_camera_to_current_room()
-	
-	# wait for one process frame and reeanable the camera smoothing
-	await get_tree().process_frame
-	game_camera.position_smoothing_enabled = true
-
-
-# Update boundaries and instantly snap the camera
-func _snap_camera_to_current_room():
-	if not current_room_node:
-		return
-		
-	# Establish the boundary walls
-	_update_camera_limits(current_room_node)
-	# Align your tracking anchor node directly to the player's location
+	# Set the camera target to the player as default
 	camera_target.global_position = player.global_position
-	
+	# Snap the camera position to the player
+	game_camera.global_position = player.global_position
+	# Update the new room camera limits
+	_update_camera_limits(current_room_node)
+	# Reset camera smoothing buffer
+	game_camera.reset_smoothing()
+
 func _update_camera_limits(room_node):
-	var limits = room_node.get_node_or_null("Limits") as ReferenceRect
+	var limits = room_node.get_node_or_null("CameraLimits") as ReferenceRect
 	if limits:
 		game_camera.limit_left = int(limits.global_position.x)
 		game_camera.limit_top = int(limits.global_position.y)
