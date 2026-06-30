@@ -10,17 +10,13 @@ var current_menu_instance = null
 
 func _ready() -> void:
 	TransitionManager.input_lock = true
+	await get_tree().create_timer(0.2).timeout
+	await tween_in_character()
 	await get_tree().create_timer(1.0).timeout
 	await instantiate_menu(MAIN_MENU_SCENE)
-	
-	# Set initial character position off_screen and tween in
-	character_image.position.x = 2340
-	await get_tree().create_timer(0.5).timeout
-	tween_in_character()
 
 func tween_in_character() -> void:
 	var tween: Tween = create_tween()
-	
 	tween.tween_property(character_image, "position:x", 0, 1.0)\
 	.set_trans(tween.TRANS_CUBIC)\
 	.set_ease(tween.EASE_OUT)
@@ -71,7 +67,7 @@ func _on_button_pressed(button_name: String) -> void:
 		"ContinueButton":
 			switch_menu(SAVE_SLOT_MENU_SCENE)
 		"NewGameButton":
-			StateManager.change_state(StateManager.GameState.WORLD)
+			StateManager.change_state(StateManager.GameState.WORLD, 2.0, 0.6, "blinds", "blinds")
 			# switch_menu(SAVE_SLOT_MENU_SCENE)
 		"SettingsButton":
 			switch_menu(SETTINGS_MENU_SCENE)

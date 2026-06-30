@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://b2f5x7tjpjxgf"]
 
 [ext_resource type="Script" uid="uid://dogljg3v5kktr" path="res://core/transitions/transition_manager.gd" id="1_gpusd"]
-[ext_resource type="Shader" uid="uid://dusq0wka66egg" path="res://core/transitions/box_grid.gdshader" id="2_5c61r"]
+[ext_resource type="Shader" uid="uid://dusq0wka66egg" path="res://core/transitions/transitions.gdshader" id="2_5c61r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5c61r"]
 shader = ExtResource("2_5c61r")
+shader_parameter/mode = 0
 shader_parameter/progress = 0.0
 shader_parameter/boxes_vertical = 9.0
 shader_parameter/box_color = Color(0, 0, 0, 1)

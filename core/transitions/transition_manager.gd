@@ -1,5 +1,13 @@
 extends Node
 
+# Map shader mode integers to strings
+const TRANSITION_MODES: Dictionary = {
+	"fade": 0,
+	"grid": 1,
+	"curtain":2,
+	"blinds":3
+}
+
 @onready var color_rect = $ColorRect
 var input_lock: bool = false
 
@@ -10,7 +18,12 @@ func _ready() -> void:
 		color_rect.visible = false
 
 # Transition func with default parameters that can be overridden
-func transition(on_mid_transition: Callable, in_duration: float = 0.2, out_duration: float = 0.5) -> void:
+func transition(on_mid_transition: Callable, \
+in_duration: float = 0.2, \
+out_duration: float = 0.5, \
+in_mode: String = "fade",
+out_mode: String = "fade") -> void:
+	
 	if input_lock or not color_rect:
 		return
 		
@@ -18,6 +31,7 @@ func transition(on_mid_transition: Callable, in_duration: float = 0.2, out_durat
 	color_rect.visible = true
 	
 	# Transition in - progress from 0 to 1
+	_set_transition_mode(in_mode)
 	var tween_in: Tween = create_tween()
 	tween_in.tween_method(_update_progress, 0.0, 1.0, in_duration)
 	await tween_in.finished
@@ -26,7 +40,8 @@ func transition(on_mid_transition: Callable, in_duration: float = 0.2, out_durat
 	if on_mid_transition.is_valid():
 		on_mid_transition.call()
 		
-	# 3. transition out - progress from 1 to 0
+	# Transition out - progress from 1 to 0
+	_set_transition_mode(out_mode)
 	var tween_out: Tween = create_tween()
 	tween_out.tween_method(_update_progress, 1.0, 0.0, out_duration)
 	await tween_out.finished
@@ -34,6 +49,11 @@ func transition(on_mid_transition: Callable, in_duration: float = 0.2, out_durat
 	# Unlock input and set visible to false to finish
 	color_rect.visible = false
 	input_lock = false
+
+func _set_transition_mode(mode_name: String) -> void:
+	if color_rect.material is ShaderMaterial:
+		var mode_id = TRANSITION_MODES.get(mode_name.to_lower(), 0)
+		color_rect.material.set_shader_parameter("mode", mode_id)
 
 func _update_progress(progress: float) -> void:
 	# color_rect.color.a = progress
