@@ -2,7 +2,7 @@ extends Node2D
 
 var exit_id = int(0)
 
-func _on_body_entered(body):
+func _on_body_entered(body: CharacterBody2D):
 	# Verify player character
 	if body is Player:
 		# 1. Loop through children to find a numerical name override
@@ -13,4 +13,5 @@ func _on_body_entered(body):
 				
 		# Switch state
 		var world_state = get_tree().root.get_node_or_null("WorldState")
-		world_state.transition_to_next_room(exit_id)
+		if world_state:
+			world_state.transition_to_next_room(exit_id)

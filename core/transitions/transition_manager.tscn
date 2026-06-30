@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dogljg3v5kktr" path="res://core/transitions/transition_manager.gd" id="1_gpusd"]
 [ext_resource type="Shader" uid="uid://dusq0wka66egg" path="res://core/transitions/box_grid.gdshader" id="2_5c61r"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fu2ls"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c61r"]
 shader = ExtResource("2_5c61r")
 shader_parameter/progress = 0.0
 shader_parameter/boxes_vertical = 9.0
@@ -69,7 +69,7 @@ script = ExtResource("1_gpusd")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1168483756]
 z_index = 10
-material = SubResource("ShaderMaterial_fu2ls")
+material = SubResource("ShaderMaterial_5c61r")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -2,10 +2,10 @@ extends State
 
 class_name Run
 
-func enter():
+func enter() -> void:
 	actor.get_node("AnimatedSprite2D").play("run")
 
-func physics_update(_delta):
+func physics_update(_delta: float) -> void:
 
 	actor.x_input()
 	actor.velocity.x = actor.direction * 100

@@ -6,13 +6,26 @@ const SAVE_SLOT_MENU_SCENE = preload("res://UI/menu/save_slot_menu.tscn")
 
 var fade_speed = 0.2
 var current_menu_instance = null
+@onready var character_image: TextureRect = $CanvasLayer/CharacterImage
 
-func _ready():
+func _ready() -> void:
 	TransitionManager.input_lock = true
 	await get_tree().create_timer(1.0).timeout
 	await instantiate_menu(MAIN_MENU_SCENE)
+	
+	# Set initial character position off_screen and tween in
+	character_image.position.x = 2340
+	await get_tree().create_timer(0.5).timeout
+	tween_in_character()
 
-func instantiate_menu(menu_scene: PackedScene):
+func tween_in_character() -> void:
+	var tween: Tween = create_tween()
+	
+	tween.tween_property(character_image, "position:x", 0, 1.0)\
+	.set_trans(tween.TRANS_CUBIC)\
+	.set_ease(tween.EASE_OUT)
+
+func instantiate_menu(menu_scene: PackedScene) -> void:
 	# Delete any previous menu
 	if current_menu_instance:
 		current_menu_instance.queue_free()
@@ -28,27 +41,27 @@ func instantiate_menu(menu_scene: PackedScene):
 			child.pressed.connect(_on_button_pressed.bind(child.name))
 	
 	# Tween the alpha for fade in and wait until finished
-	var fade_in = create_tween()
+	var fade_in: Tween = create_tween()
 	fade_in.tween_property(current_menu_instance, "modulate:a", 1.0, fade_speed)
 	await fade_in.finished
 	
 	# Unlock input
 	TransitionManager.input_lock = false
 	
-func switch_menu(next_menu_scene: PackedScene):
+func switch_menu(next_menu_scene: PackedScene) -> void:
 	if TransitionManager.input_lock:
 		return
 		
 	TransitionManager.input_lock = true
 
-	var fade_out = create_tween()
+	var fade_out: Tween = create_tween()
 	fade_out.tween_property(current_menu_instance, "modulate:a", 0.0, fade_speed)
 	await fade_out.finished
 	
 	# Instantiate new menu
 	await instantiate_menu(next_menu_scene)
 	
-func _on_button_pressed(button_name: String):
+func _on_button_pressed(button_name: String) -> void:
 	if TransitionManager.input_lock:
 		return
 		

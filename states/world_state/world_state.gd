@@ -32,7 +32,9 @@ func transition_to_next_room(exit_id):
 func _execute_room_swap(next_room_path, target_spawn_id):
 
 	# Call global transition instance
-	TransitionManager.transition(func():
+	TransitionManager.transition(
+		
+		func():
 		#player.set_physics_process(false)
 		
 		# Clear out the previous room layout before loading the new one

@@ -1,7 +1,7 @@
 extends State
 class_name Jump
 
-func enter():
+func enter() -> void:
 	print("Entering jump state")
 	
 	actor.get_node("AnimatedSprite2D").play("idle")
@@ -9,7 +9,7 @@ func enter():
 	actor.jump_counter += 1 # Increments for the double jump
 	actor.velocity.y = actor.JUMP_VELOCITY
 	
-func physics_update(delta):
+func physics_update(delta: float) -> void:
 	# Add gravity
 	actor.velocity.y += actor.gravity * delta
 	

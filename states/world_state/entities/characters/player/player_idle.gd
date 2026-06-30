@@ -3,10 +3,10 @@ extends State
 
 class_name Idle
 
-func enter():
+func enter() -> void:
 	actor.get_node("AnimatedSprite2D").play("idle")
 
-func physics_update(_delta):
+func physics_update(_delta: float) -> void:
 
 	# Handle horizontal movement
 	actor.x_input()

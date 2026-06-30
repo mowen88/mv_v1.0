@@ -1,15 +1,7 @@
-
-# Dictionary with room names as keys, 
-# and spawn position logic as the values.
-# The values are dictionaries with exit number as keys,
-# and new room name as values. The exit number corresponds
-# to the spawn point in the new room.
-
-#underscore separated letters to determine the zone the room belongs to.
-
 extends Node
 
-const ZONE_REGISTRY = {
+# Typed dictionary: Keys are Strings (ids), values are Dictionaries
+const ZONE_REGISTRY: Dictionary[String, Dictionary] = {
 	"ruins": {
 		"zone_name": "Ancient Ruins",
 		"bgm": "res://audio/music/ruins_theme.ogg"
@@ -20,8 +12,7 @@ const ZONE_REGISTRY = {
 	}
 }
 
-const ROOM_REGISTRY = {
-	# Standard Room: Automatically inherits "ruins" settings
+const ROOM_REGISTRY: Dictionary[String, Dictionary] = {
 	"01_a": {
 		"zone_id": "ruins",
 		"exits": { 1: "01_b", 2: "01_boss" }
@@ -30,8 +21,6 @@ const ROOM_REGISTRY = {
 		"zone_id": "ruins",
 		"exits": { 1: "01_a" }
 	},
-	
-	# Boss Room: Shares the "ruins" map tracker, but overrides music and text!
 	"01_boss": {
 		"zone_id": "ruins", 
 		"banner_override": "The Corrupted Guardian", 

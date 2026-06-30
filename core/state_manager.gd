@@ -2,7 +2,7 @@ extends Node
 
 enum GameState { SPLASH, TITLE, CINEMATIC, WORLD }
 
-const SCENES = {
+const SCENES: Dictionary[GameState, String] = {
 	GameState.SPLASH: "res://states/splash_state/splash_state.tscn",
 	GameState.TITLE: "res://states/title_state/title_state.tscn",
 	GameState.CINEMATIC: "res://states/cinematic_state/cinematic_state.tscn",

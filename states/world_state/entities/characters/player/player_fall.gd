@@ -2,11 +2,11 @@ extends State
 
 class_name Fall
 
-func enter():
+func enter() -> void:
 	print("Entering fall state")
 	actor.get_node("AnimatedSprite2D").play("run")
 
-func physics_update(delta):
+func physics_update(delta: float) -> void:
 	# Apply regular gravity while falling
 	actor.velocity.y += actor.gravity * delta
 	
