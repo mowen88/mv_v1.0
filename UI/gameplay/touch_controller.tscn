@@ -82,3 +82,4 @@ modulate = Color(1, 1, 1, 0.5019608)
 position = Vector2(64, 32)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("6_ir5l8")
+action = "toggle_pause"

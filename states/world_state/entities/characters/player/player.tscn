@@ -101,6 +101,7 @@ animations = [{
 size = Vector2(6, 14)
 
 [node name="Player" unique_id=1164829458 groups=["player"] instance=ExtResource("1_wgudp")]
+process_mode = 1
 physics_interpolation_mode = 1
 script = ExtResource("2_xul6b")
 

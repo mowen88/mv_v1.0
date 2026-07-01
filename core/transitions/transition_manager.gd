@@ -37,7 +37,7 @@ out_mode: String = "fade") -> void:
 	
 	# Mid-point function call
 	if on_mid_transition.is_valid():
-		on_mid_transition.call()
+		await on_mid_transition.call()
 		
 	# Transition out - progress from 1 to 0
 	_set_transition_mode(out_mode)

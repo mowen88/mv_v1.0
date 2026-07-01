@@ -4,6 +4,8 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var game_camera: Camera2D = $GameCamera
 @onready var camera_target: Node2D = $CameraTarget
+@onready var touch_controller: CanvasLayer = $TouchController
+@onready var menu_manager: Control = $MenuCanvas/MenuAnchor/MenuManager
 
 var current_room_node: Node2D = null
 var in_cutscene: bool = false
@@ -15,6 +17,17 @@ func _ready():
 func _process(_delta):
 	if not in_cutscene and player:
 		camera_target.global_position = player.global_position
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_pause"):
+		_toggle_game_pause()
+		
+## Handles flipping the engine pause state cleanly
+func _toggle_game_pause() -> void:
+	# Switch pause boolean
+	get_tree().paused = !get_tree().paused
+	menu_manager._initialize_menu()
+	#touch_controller.visible = !touch_controller.visible
 
 func transition_to_next_room(exit_id):
 	if not current_room_node:
@@ -75,5 +88,3 @@ func _update_camera_limits(room_node):
 		game_camera.limit_top = int(limits.global_position.y)
 		game_camera.limit_right = int(limits.global_position.x + limits.size.x)
 		game_camera.limit_bottom = int(limits.global_position.y + limits.size.y)
-
-	
