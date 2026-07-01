@@ -2,8 +2,6 @@ extends State
 class_name Jump
 
 func enter() -> void:
-	print("Entering jump state")
-	
 	actor.get_node("AnimatedSprite2D").play("idle")
 	
 	actor.jump_counter += 1 # Increments for the double jump

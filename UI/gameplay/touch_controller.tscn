@@ -21,7 +21,7 @@ grow_vertical = 0
 
 [node name="LeftButton" type="TouchScreenButton" parent="DPadGroup" unique_id=935672647]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(160, 128)
+position = Vector2(80, 128)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("1_hfat2")
 passby_press = true
@@ -29,7 +29,7 @@ action = "move_left"
 
 [node name="RightButton" type="TouchScreenButton" parent="DPadGroup" unique_id=1413414212]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(448, 128)
+position = Vector2(350, 128)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("2_36e3b")
 passby_press = true
@@ -49,21 +49,21 @@ grow_vertical = 0
 
 [node name="JumpButton" type="TouchScreenButton" parent="ActionGroup" unique_id=1967832043]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(496, 328)
+position = Vector2(500, 328)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("3_bw6v4")
 action = "jump"
 
 [node name="AttackButton" type="TouchScreenButton" parent="ActionGroup" unique_id=1327745849]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(256, 328)
+position = Vector2(230, 328)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("4_0yjk1")
 action = "attack"
 
 [node name="ShootButton" type="TouchScreenButton" parent="ActionGroup" unique_id=2117206609]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(496, 96)
+position = Vector2(500, 72)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("5_fsqso")
 action = "shoot"

@@ -9,7 +9,6 @@ const SCENES: Dictionary[GameState, String] = {
 	GameState.WORLD: "res://states/world_state/world_state.tscn"
 }
 
-
 func change_state(target_state: GameState,\
 in_duration: float = 0.2,\
 out_duration: float = 0.6,\

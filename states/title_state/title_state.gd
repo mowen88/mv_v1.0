@@ -72,7 +72,7 @@ func _on_button_pressed(button_name: String) -> void:
 		"ContinueButton":
 			switch_menu(SAVE_SLOT_MENU_SCENE)
 		"NewGameButton":
-			StateManager.change_state(StateManager.GameState.WORLD, 0.5, 1.0, "fade", "fade")
+			StateManager.change_state(StateManager.GameState.WORLD, 0.5, 1.0, "fade", "blinds")
 			# switch_menu(SAVE_SLOT_MENU_SCENE)
 		"SettingsButton":
 			switch_menu(SETTINGS_MENU_SCENE)

@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dtgksoxcmiogl"]
 
-[ext_resource type="Script" uid="uid://b3h8emu3cx4ui" path="res://states/world_state/rooms/door.gd" id="1_5ya00"]
-
 [node name="BaseRoom" type="Node2D" unique_id=315341494]
 
 [node name="BGTileMap" type="TileMapLayer" parent="." unique_id=599124256]
@@ -17,4 +15,3 @@ offset_bottom = 40.0
 [node name="Spawns" type="Node2D" parent="." unique_id=214822847]
 
 [node name="Exits" type="Node2D" parent="." unique_id=558606910]
-script = ExtResource("1_5ya00")

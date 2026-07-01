@@ -12,19 +12,17 @@ const ZONE_REGISTRY: Dictionary[String, Dictionary] = {
 	}
 }
 
-const ROOM_REGISTRY: Dictionary[String, Dictionary] = {
+const ROOM_REGISTRY = {
 	"01_a": {
-		"zone_id": "ruins",
-		"exits": { 1: "01_b", 2: "01_boss" }
+		1: "01_b",
+		2: "01_c"
 	},
 	"01_b": {
-		"zone_id": "ruins",
-		"exits": { 1: "01_a" }
+		1: "01_a",
+		2: "01_c"
 	},
-	"01_boss": {
-		"zone_id": "ruins", 
-		"banner_override": "The Corrupted Guardian", 
-		"bgm_override": "res://audio/music/boss_battle_theme.ogg",
-		"exits": { 1: "01_a" }
+	"01_c": {
+		1: "01_b",
+		2: "01_a"
 	}
 }
