@@ -18,6 +18,10 @@ func _ready() -> void:
 	# Start on initial state
 	if initial_state:
 		change_state(initial_state.name.to_lower())
+		
+func handle_input(event: InputEvent) -> void:
+	if current_state:
+		current_state.handle_input(event)
 	
 func _process(delta: float):
 	if current_state:
@@ -26,7 +30,6 @@ func _process(delta: float):
 func _physics_process(delta: float):
 	if current_state:
 		current_state.physics_update(delta)
-		print()
 
 func change_state(new_state_name: String):
 	if current_state:

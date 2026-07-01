@@ -5,5 +5,6 @@
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.9882353, 0.9843137, 0.7882353, 1)
 Button/font_sizes/font_size = 90
 Button/fonts/font = ExtResource("1_nhslw")

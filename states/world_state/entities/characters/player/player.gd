@@ -6,24 +6,33 @@ const JUMP_VELOCITY: float = -280.0
 const MAX_JUMPS: int = 2
 
 @onready var fsm: FiniteStateMachine = $FiniteStateMachine
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction: float = 0.0
+var facing: int = 1:
+	set(value):
+		facing = value
+		animated_sprite.flip_h = (facing == -1)
+		
 var gravity: float = 900.0
 var jump_counter: int = 0
 
-func _physics_process(delta: float) -> void:
-	# Standard movement and gravity logic
-	x_input()
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-	move_and_slide()
-
 func x_input() -> void:
+	if InputManager.input_lock:
+		velocity.x = direction * SPEED
+		if direction != 0:
+			facing = int(sign(direction))
+		return
+		
 	direction = Input.get_axis("move_left", "move_right")
-	
+
 	if direction != 0:
 		velocity.x = direction * SPEED
+		facing = int(sign(direction))
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = 0
+
+func _unhandled_input(event: InputEvent) -> void:
+	if InputManager.input_lock:
+		return
+	fsm.handle_input(event)

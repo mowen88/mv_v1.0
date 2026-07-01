@@ -17,6 +17,7 @@ run/max_fps=120
 
 [autoload]
 
+InputManager="*uid://c183fg5tolq3"
 StateManager="*uid://bx184qau8e7l0"
 TransitionManager="*uid://b2f5x7tjpjxgf"
 MapData="*uid://d0rsjcpl76h3e"

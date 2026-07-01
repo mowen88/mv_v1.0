@@ -12,6 +12,9 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
+func handle_input(_event: InputEvent) -> void:
+	pass
+
 func update(_delta: float) -> void:
 	pass
 	

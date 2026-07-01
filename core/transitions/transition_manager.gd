@@ -9,7 +9,6 @@ const TRANSITION_MODES: Dictionary = {
 }
 
 @onready var color_rect = $ColorRect
-var input_lock: bool = false
 
 func _ready() -> void:
 	# Keep the overlay hidden on boot
@@ -24,11 +23,11 @@ out_duration: float = 0.5, \
 in_mode: String = "fade",
 out_mode: String = "fade") -> void:
 	
-	if input_lock or not color_rect:
+	if InputManager.input_lock or not color_rect:
 		return
-		
-	input_lock = true
+
 	color_rect.visible = true
+	InputManager.input_lock = true
 	
 	# Transition in - progress from 0 to 1
 	_set_transition_mode(in_mode)
@@ -48,7 +47,7 @@ out_mode: String = "fade") -> void:
 	
 	# Unlock input and set visible to false to finish
 	color_rect.visible = false
-	input_lock = false
+	InputManager.input_lock = false
 
 func _set_transition_mode(mode_name: String) -> void:
 	if color_rect.material is ShaderMaterial:
@@ -56,7 +55,6 @@ func _set_transition_mode(mode_name: String) -> void:
 		color_rect.material.set_shader_parameter("mode", mode_id)
 
 func _update_progress(progress: float) -> void:
-	# color_rect.color.a = progress
-
+	
 	if color_rect and color_rect.material:
 		color_rect.material.set_shader_parameter("progress", progress)
