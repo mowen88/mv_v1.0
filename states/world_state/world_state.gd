@@ -5,7 +5,9 @@ extends Node2D
 @onready var game_camera: Camera2D = $GameCamera
 @onready var camera_target: Node2D = $CameraTarget
 @onready var touch_controller: CanvasLayer = $TouchController
+@onready var menu_canvas: CanvasLayer = $MenuCanvas
 @onready var menu_manager: Control = $MenuCanvas/MenuAnchor/MenuManager
+@onready var pause_menu: VBoxContainer = $MenuCanvas/MenuAnchor/MenuManager/PauseMenu
 
 var current_room_node: Node2D = null
 var in_cutscene: bool = false
@@ -13,6 +15,9 @@ var in_cutscene: bool = false
 func _ready():
 	# Instantiates the first room with room string and spawn point paramters
 	_load_room("res://states/world_state/rooms/01_a/01_a.tscn", 0)
+	
+	# Connect signals from menus
+	pause_menu.unpause_requested.connect(_toggle_game_pause)
 
 func _process(_delta):
 	if not in_cutscene and player:
@@ -26,7 +31,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _toggle_game_pause() -> void:
 	# Switch pause boolean
 	get_tree().paused = !get_tree().paused
-	menu_manager._initialize_menu()
+	touch_controller.visible = !get_tree().paused
+	menu_canvas.visible = get_tree().paused
+	if get_tree().paused:
+		menu_manager._initialize_menu("PauseMenu")
 	#touch_controller.visible = !touch_controller.visible
 
 func transition_to_next_room(exit_id):

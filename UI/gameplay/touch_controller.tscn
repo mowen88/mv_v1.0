@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://db7f6s5kl2ipi" path="res://UI/gameplay/elements/a_button.png" id="3_bw6v4"]
 [ext_resource type="Texture2D" uid="uid://dc7xoiyp7isgh" path="res://UI/gameplay/elements/b_button.png" id="4_0yjk1"]
 [ext_resource type="Texture2D" uid="uid://bthqouvpo6sf6" path="res://UI/gameplay/elements/c_button.png" id="5_fsqso"]
-[ext_resource type="Texture2D" uid="uid://d02c6gp4if4be" path="res://UI/gameplay/elements/menu_button.png" id="6_ir5l8"]
+[ext_resource type="Texture2D" uid="uid://51sgw14yfqp7" path="res://UI/gameplay/elements/pause_button.png" id="6_hfat2"]
 
 [node name="TouchController" type="CanvasLayer" unique_id=1149322206]
 layer = 100
@@ -21,7 +21,7 @@ grow_vertical = 0
 
 [node name="LeftButton" type="TouchScreenButton" parent="DPadGroup" unique_id=935672647]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(80, 128)
+position = Vector2(130, 128)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("1_hfat2")
 passby_press = true
@@ -29,7 +29,7 @@ action = "move_left"
 
 [node name="RightButton" type="TouchScreenButton" parent="DPadGroup" unique_id=1413414212]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(350, 128)
+position = Vector2(400, 128)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("2_36e3b")
 passby_press = true
@@ -49,21 +49,21 @@ grow_vertical = 0
 
 [node name="JumpButton" type="TouchScreenButton" parent="ActionGroup" unique_id=1967832043]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(500, 328)
+position = Vector2(450, 328)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("3_bw6v4")
 action = "jump"
 
 [node name="AttackButton" type="TouchScreenButton" parent="ActionGroup" unique_id=1327745849]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(230, 328)
+position = Vector2(180, 328)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("4_0yjk1")
 action = "attack"
 
 [node name="ShootButton" type="TouchScreenButton" parent="ActionGroup" unique_id=2117206609]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(500, 72)
+position = Vector2(450, 72)
 scale = Vector2(10, 10)
 texture_normal = ExtResource("5_fsqso")
 action = "shoot"
@@ -77,9 +77,9 @@ offset_left = -256.0
 offset_bottom = 256.0
 grow_horizontal = 0
 
-[node name="MenuButton" type="TouchScreenButton" parent="MenuGroup" unique_id=1108558003]
+[node name="PauseButton" type="TouchScreenButton" parent="MenuGroup" unique_id=1108558003]
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(64, 32)
+position = Vector2(50, 50)
 scale = Vector2(10, 10)
-texture_normal = ExtResource("6_ir5l8")
+texture_normal = ExtResource("6_hfat2")
 action = "toggle_pause"

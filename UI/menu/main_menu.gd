@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-signal new_game_requested
 signal continue_requested
 signal settings_requested
 
@@ -13,7 +12,7 @@ func _ready() -> void:
 func _on_button_pressed(button_name: String) -> void:
 	match button_name:
 		"NewGameButton": 
-			new_game_requested.emit()
+			StateManager.change_state(StateManager.GameState.WORLD, 0.5, 1.0, "fade", "blinds")
 		"ContinueButton": 
 			continue_requested.emit()
 		"SettingsButton": 

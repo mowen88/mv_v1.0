@@ -1,22 +1,43 @@
 extends VBoxContainer
 
-# Signal telling the parent MenuManager to go back
 signal back_requested
 
 func _ready() -> void:
-	for child in get_children():
-		if child is Button:
-			child.pressed.connect(_on_button_pressed.bind(child.name))
-			child.focus_mode = Control.FOCUS_NONE
+	# Scans the menu and creates all relevant signals
+	_connect_menu_signals(self)
 
+# Loop through and add the signals
+func _connect_menu_signals(node: Node) -> void:
+	for child in node.get_children():
+		# Remove focus mode for touch screen cleanliness
+		if child is Control:
+			child.focus_mode = Control.FOCUS_NONE
+		
+		# Connect Sliders
+		if child is Slider:
+			child.value_changed.connect(_on_slider_changed.bind(child.name))
+			
+		# Connect buttons
+		elif child is Button:
+			child.pressed.connect(_on_button_pressed.bind(child.name))
+			
+		## If this child contains sub-nodes (like HBoxContainer), scan inside it too!
+		#if child.get_child_count() > 0:
+			#_connect_menu_signals(child)
+
+# Button handling
 func _on_button_pressed(button_name: String) -> void:
 	match button_name:
 		"BackButton":
-			# This explicitly belongs to the settings screen context
 			back_requested.emit()
-		"MusicVolButton":
-			print("[SETTINGS] Music volume button clicked.")
-			# Your future volume adjustment logic goes here!
-		"SFXVolButton":
-			print("[SETTINGS] SFX volume button clicked.")
-			# Your future volume adjustment logic goes here!
+			
+# 0 to 100 slider handling
+func _on_slider_changed(value: float, slider_name: String) -> void:
+	match slider_name:
+		"MusicSlider":
+			print("[SETTINGS] Music Volume: ", value, "%")
+			# Link this directly to your AudioManager sound bus later!
+			
+		"SFXSlider":
+			print("[SETTINGS] SFX Volume: ", value, "%")
+			# Link this directly to your AudioManager sound bus later!
